@@ -1,0 +1,46 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-admin-ui-to-view-and-add-nurses-analogous-to-the-existing-manage-doctors-panel-and-integrate-it-into-the-admin-dashboard",
+      "featureTitle": "Add admin UI to view and add nurses, analogous to the existing “Manage Doctors” panel, and integrate it into the Admin Dashboard.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/admin/AdminDashboard.tsx",
+        "frontend/src/pages/admin/ManageNursesPanel.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-admin-ui-control-to-trigger-demo-staff-seeding-from-the-dashboard-so-an-admin-can-populate-doctors-and-nurses-quickly-for-demo-testing",
+      "featureTitle": "Add an admin UI control to trigger demo staff seeding from the dashboard so an admin can populate doctors and nurses quickly for demo/testing.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/admin/AdminDashboard.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

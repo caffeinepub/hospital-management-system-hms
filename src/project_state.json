@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a modern, responsive Hospital Management System (HMS) web app adapted for the Internet Computer platform: React + TypeScript frontend, Motoko canister backend, Internet Identity auth, role-based dashboards (Patient/Doctor/Admin), appointment booking, and in-app notifications (no SMTP/SMS).",
+  "architectural_notes": [
+    "Platform adaptation: backend in Motoko canister(s); frontend in React+TypeScript (Vite) with Tailwind; data stored in canister (no MySQL/MongoDB).",
+    "Authentication via Internet Identity; application-level role mapping for Patient/Doctor/Admin authorization.",
+    "Email/SMS notifications are not available; implement in-app notification system instead.",
+    "Reminder logic must use an ICP-compatible scheduling approach rather than node-cron/SMTP integrations."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-authentication-in-the-frontend-and-connect-it-to-the-motoko-canister-so-users-can-sign-in-out-and-the-app-can-reliably-identify-the-current-user-principal",
+      "title": "Implement Internet Identity authentication in the frontend and connect it to the Motoko canister so users can sign in/out and the app can reliably identify the current user principal.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-role-based-access-control-with-roles-patient-doctor-and-admin-including-a-backend-role-mapping-from-principal-role-s-and-frontend-route-page-gating-so-each-role-can-only-access-its-own-dashboard-and-permitted-actions",
+      "title": "Implement role-based access control with roles Patient, Doctor, and Admin, including a backend role mapping from principal -> role(s) and frontend route/page gating so each role can only access its own dashboard and permitted actions.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-patient-experience-patient-registration-profile-management-browse-doctor-list-detail-book-an-appointment-by-selecting-doctor-date-time-view-upcoming-appointments-and-appointment-history-and-view-in-app-notifications",
+      "title": "Build the Patient experience: patient registration/profile management, browse doctor list/detail, book an appointment by selecting doctor/date/time, view upcoming appointments and appointment history, and view in-app notifications.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-doctor-experience-view-today-s-and-upcoming-appointment-schedules-view-patient-details-for-appointments-update-appointment-status-and-add-medical-notes-or-prescriptions-associated-with-an-appointment",
+      "title": "Build the Doctor experience: view today’s and upcoming appointment schedules, view patient details for appointments, update appointment status, and add medical notes or prescriptions associated with an appointment.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-admin-management-experience-manage-doctors-staff-and-patients-manage-appointments-and-show-dashboard-analytics-including-totals-and-appointment-statistics",
+      "title": "Build the Admin/Management experience: manage doctors, staff, and patients; manage appointments; and show dashboard analytics including totals and appointment statistics.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-appointment-reminders-as-in-app-notifications-that-are-triggered-24-hours-and-1-hour-before-an-appointment-using-an-icp-compatible-approach-no-smtp-sms-no-traditional-cron-notifications-must-be-created-once-per-reminder-window-and-must-not-duplicate",
+      "title": "Implement appointment reminders as in-app notifications that are triggered 24 hours and 1 hour before an appointment using an ICP-compatible approach (no SMTP/SMS, no traditional cron). Notifications must be created once per reminder window and must not duplicate.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-clean-responsive-hospital-themed-ui-ux-with-a-blue-white-palette-landing-page-navigation-with-login-register-entry-points-role-specific-dashboards-and-footer-with-contact-information-use-modern-cards-layout-and-subtle-animations",
+      "title": "Create a clean, responsive hospital-themed UI/UX with a blue/white palette: landing page, navigation with login/register entry points, role-specific dashboards, and footer with contact information. Use modern cards layout and subtle animations.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-static-image-assets-for-the-hms-ui-logo-and-landing-hero-illustration-and-render-them-in-the-frontend-from-static-files-under-frontend-public-assets-generated",
+      "title": "Add generated static image assets for the HMS UI (logo and landing hero illustration) and render them in the frontend from static files under frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-admin-ui-to-view-and-add-nurses-analogous-to-the-existing-manage-doctors-panel-and-integrate-it-into-the-admin-dashboard",
+      "title": "Add admin UI to view and add nurses, analogous to the existing “Manage Doctors” panel, and integrate it into the Admin Dashboard.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-admin-ui-control-to-trigger-demo-staff-seeding-from-the-dashboard-so-an-admin-can-populate-doctors-and-nurses-quickly-for-demo-testing",
+      "title": "Add an admin UI control to trigger demo staff seeding from the dashboard so an admin can populate doctors and nurses quickly for demo/testing.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Set up ICP-compatible project architecture (React+TS+Vite/Tailwind frontend, Motoko backend canister) with folder structure and core scaffolding",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement authentication via Internet Identity and role-based access control (Patient/Doctor/Admin role mapping)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Patient features: registration/profile, browse doctor details, book appointments, view appointment history, view in-app notifications",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Doctor features: view patient details, view schedules, update appointment status, add medical notes/prescriptions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Admin features: manage doctors/staff/patients, manage appointments, view dashboard analytics (totals and stats)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Appointment reminders and alerts implemented as in-app notifications (24h and 1h before) with platform-appropriate scheduling approach",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Define data model/schema for patients, doctors, staff, appointments, notes/prescriptions, notifications stored in canister stable data",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Create REST-like canister interface/API (Motoko methods) and corresponding frontend service layer; include validation and error handling",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Design and implement clean hospital-themed UI/UX (blue/white), landing page, nav/login/register, responsive dashboards, footer, modern cards/animations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Define and implement the backend data model in Motoko for: Patients, Doctors, Staff, Appointments, Appointment Status, Medical Notes/Prescriptions, and Notifications, with stable storage so data persists across canister upgrades.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Create a Motoko canister interface (RPC-style methods) and a corresponding frontend service layer to support: browsing doctor details, patient profile, appointment booking, appointment history, doctor schedule, admin management actions, and notifications; include input validation and structured error handling.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add staff management/seed data: create and manage staff records including doctors and nurses (e.g., add initial staff entries for testing/demo)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Extend the backend data model and API to support nurses as staff members, alongside existing doctors, so the system can store and retrieve nurse records.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Add an admin-only backend method to seed a small set of demo staff entries (multiple doctors and multiple nurses) for testing/demo, without creating duplicates when called multiple times.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Hospital Management System (HMS)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

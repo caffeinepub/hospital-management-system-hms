@@ -1,0 +1,9 @@
+{
+  "frontend/src/components/NavBar.tsx": "Navigation bar component with role-based menu items, authentication controls, and responsive mobile menu using Sheet component. Fixed ESLint error by replacing require() with ES6 import for useQueryClient.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, doctors, nurses, patients, appointments, notifications, admin functions, and demo staff seeding with proper cache invalidation.",
+  "frontend/src/hooks/useNotificationRefresh.ts": "Custom hook that provides notification refresh functionality with loading state for manual notification updates in dashboards and notification pages.",
+  "frontend/src/pages/patient/PatientProfilePage.tsx": "Patient profile management page allowing users to view and edit their personal information (name and age). Fixed TypeScript error by using AppRole.patient enum instead of string literal.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup, collecting name and age to register as a patient. Fixed TypeScript error by using AppRole.patient enum instead of string literal.",
+  "frontend/src/pages/admin/ManageNursesPanel.tsx": "Admin panel component for managing nurses with a table listing nurse name, department, and principal ID, plus an \"Add Nurse\" dialog with validation and toast notifications.",
+  "frontend/src/pages/admin/AdminDashboard.tsx": "Admin dashboard with stats cards for doctors, nurses, patients, and appointments, plus a \"Seed Demo Staff\" button and tabs for managing doctors, nurses, patients, appointments, and roles."
+}

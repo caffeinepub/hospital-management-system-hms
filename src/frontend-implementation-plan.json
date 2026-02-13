@@ -1,0 +1,55 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Admin nurse management and demo staff seeding UI",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Add an Admin Dashboard panel to list and add nurses, analogous to Manage Doctors, including React Query hooks.",
+      "acceptanceCriteria": [
+        "A new admin panel exists for managing nurses with a table listing nurse name, department, and principal ID (formatted similar to doctors/patients).",
+        "The nurses panel provides an “Add Nurse” dialog with inputs for full name, department, and principal ID, validates required fields, and shows success/error toasts.",
+        "Admin Dashboard tabs include a Nurses/Staff tab (or equivalent) that renders the nurses management panel.",
+        "Frontend adds React Query hooks for getNurses/addNurse (matching existing useGetDoctors/useAddDoctor patterns) and invalidates nurse queries on mutation success."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks for nurses: useGetNurses (query key like ['nurses']) and useAddNurse (mutation calling the backend capability to add a nurse and invalidating the nurses query on success). Ensure the Nurse type is imported from the generated backend types. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/ManageNursesPanel.tsx",
+          "operation": "create",
+          "description": "Create a new ManageNursesPanel modeled after ManageDoctorsPanel: fetch nurses via useGetNurses; render a table with Name, Department, Principal ID (truncate/monospace consistent with other panels); include an “Add Nurse” dialog using existing shadcn/ui components (Card, Button, Dialog, Input, Label, Table) with required-field validation, Principal parsing, loading state, and success/error toasts. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Integrate the nurses management panel into the Admin Dashboard Tabs: add a Nurses/Staff tab trigger and a corresponding TabsContent rendering ManageNursesPanel; adjust the TabsList grid columns accordingly; ensure user-facing text is English. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add an admin dashboard control to trigger demo staff seeding and refresh doctors/nurses lists after success.",
+      "acceptanceCriteria": [
+        "Admin Dashboard includes a clearly labeled action (e.g., button) to run the backend demo staff seeding method.",
+        "Clicking the action shows loading state and a success/error toast.",
+        "After successful seeding, the doctors list and nurses list refresh automatically (React Query invalidation/refetch)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a React Query mutation hook (e.g., useSeedDemoStaff) that calls the backend demo staff seeding capability (align the called method name with the backend implementation) and on success invalidates/refetches both ['doctors'] and ['nurses'] queries (and any relevant dashboard stats queries if desired for immediate UI consistency). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/admin/AdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Add a clearly labeled admin action (e.g., a button near the dashboard header) that triggers the demo staff seeding mutation: show pending/loading state, and display success/error toasts; on success rely on the mutation hook invalidations to refresh doctors and nurses lists automatically. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

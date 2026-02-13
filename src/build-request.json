@@ -1,0 +1,104 @@
+{
+  "kind": "build_request",
+  "title": "Add staff records including doctors and nurses (with demo seeding)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Extend the backend data model and API to support nurses as staff members, alongside existing doctors, so the system can store and retrieve nurse records.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "add some staff including doctors and nurse"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend defines a Nurse type (id: Principal, name: Text, department: Text or equivalent) and persists nurses in canister state.",
+        "Backend exposes admin-only methods to add a nurse and to list all nurses (similar to existing addDoctor/getDoctors patterns).",
+        "Nurse creation automatically creates/updates a corresponding UserProfile with appRole set to nurse and assigns the underlying AccessControl #user permission (consistent with addDoctor behavior).",
+        "All new nurse-related methods enforce admin authorization (trap on unauthorized callers)."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add an admin-only backend method to seed a small set of demo staff entries (multiple doctors and multiple nurses) for testing/demo, without creating duplicates when called multiple times.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "add some staff including doctors and nurse"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes an admin-only seedDemoStaff (or equivalent) method that creates at least 2 doctors and at least 2 nurses with deterministic Principal IDs generated inside the canister.",
+        "Calling the seed method multiple times does not create duplicate doctor/nurse records and does not corrupt existing records.",
+        "After seeding, getDoctors returns the seeded doctors and getNurses returns the seeded nurses."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add admin UI to view and add nurses, analogous to the existing “Manage Doctors” panel, and integrate it into the Admin Dashboard.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "add some staff including doctors and nurse"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new admin panel exists for managing nurses with a table listing nurse name, department, and principal ID (formatted similar to doctors/patients).",
+        "The nurses panel provides an “Add Nurse” dialog with inputs for full name, department, and principal ID, validates required fields, and shows success/error toasts.",
+        "Admin Dashboard tabs include a Nurses/Staff tab (or equivalent) that renders the nurses management panel.",
+        "Frontend adds React Query hooks for getNurses/addNurse (matching existing useGetDoctors/useAddDoctor patterns) and invalidates nurse queries on mutation success."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Add an admin UI control to trigger demo staff seeding from the dashboard so an admin can populate doctors and nurses quickly for demo/testing.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "add some staff including doctors and nurse"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin Dashboard includes a clearly labeled action (e.g., button) to run the backend demo staff seeding method.",
+        "Clicking the action shows loading state and a success/error toast.",
+        "After successful seeding, the doctors list and nurses list refresh automatically (React Query invalidation/refetch)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Keep all Motoko logic in the single backend actor at backend/main.mo (no additional backend services).",
+    "Do not edit files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Use English for all user-facing text."
+  ],
+  "nonGoals": [
+    "Building a dedicated nurse/staff dashboard with its own routes and workflows (beyond admin management).",
+    "Adding external databases, third-party auth providers, email/SMS notifications, or real-time websocket features."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
